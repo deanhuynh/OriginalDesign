@@ -1,3 +1,6 @@
+int pigMove = 100;
+boolean pigMoved = false;
+
 void setup()
 {
   size(400,400);
@@ -8,6 +11,19 @@ void draw()
 	pig();
 	hat();
 	stand();
+	if(pigMove > -50 && pigMoved == false)
+	{
+		pigMove--;
+	}
+	else if(pigMove < 200)
+	{
+		pigMoved = true;
+		pigMove++;	
+	}
+	else
+	{
+		pigMoved = false;
+	}
 }
 
 void ground()
@@ -19,7 +35,7 @@ void ground()
 	rect(0,300,400,100);
 	//shadows
 	fill(0, 0, 0,100);
-	ellipse(353,339,300,70);
+	ellipse(353 + pigMove,339,300,70);
 	triangle(100,330,100,300,130,300);
 }
 
@@ -27,18 +43,18 @@ void pig()
 {
 	//pig
 	fill(255, 176, 176);
-	rect(269,196,213,91,100);
-	triangle(337,285,364,287,363,329);
-	rect(362,324,-10,5);
+	rect(269 + pigMove,196,213,91,100);
+	triangle(337 + pigMove,285,364 + pigMove,287,363 + pigMove,329);
+	rect(362 + pigMove,324,-10,5);
 	beginShape();
-	    vertex(300,210);
-	    vertex(260,210);
-	    vertex(241,263);
-	    vertex(214,268);
-	    vertex(223,280);
-	    vertex(300,286);
+	    vertex(300 + pigMove,210);
+	    vertex(260 + pigMove,210);
+	    vertex(241 + pigMove,263);
+	    vertex(214 + pigMove,268);
+	    vertex(223 + pigMove,280);
+	    vertex(300 + pigMove,286);
 	endShape();
-	triangle(260,210,261,185,280,210);
+	triangle(260 + pigMove,210,261 + pigMove,185,280 + pigMove,210);
 }
 
 void hat(){
